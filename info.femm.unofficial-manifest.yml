@@ -21,7 +21,11 @@ add-extensions:
     merge-dirs: lxvst;vst3
     subdirectories: true
     no-autodownload: true
-    
+
+  org.freedesktop.Platform.Compat.i386:
+    directory: lib/i386-linux-gnu
+    version: '21.08'
+
 # Support 32-bit at buildtime
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
@@ -39,10 +43,11 @@ finish-args:
   - --talk-name=org.gnome.Mutter.DisplayConfig
   - --talk-name=org.freedesktop.Flatpak
   - --filesystem=host
-  - --filesystem=~/.local/share/flatpak-wine/:create
+  - --filesystem=~/.local/share/femm42-flatpak/:create
   - --device=all
+  - --device=dri
   # wineprefixes are created here
-  - --persist=~/.local/share/flatpak-wine/
+  - --persist=~/.local/share/femm42-flatpak/
   # Support 32-bit runtime
   # Testing for Driver San andreas- --env=LD_LIBRARY_PATH=/app/lib:/app/lib:/app/lib32:/app/lib64:/app/lib/i386-linux-gnu:/app/lib/wine:/app/lib64/wine:$(pwd)
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib:/app/lib32:/app/lib64:/app/lib/i386-linux-gnu:/app/lib/wine:/app/lib64/wine
@@ -170,8 +175,8 @@ modules:
     # icon
     - install femm.sh /app/bin 
     - install -D --mode=644 femm-256.svg /app/share/icons/hicolor/256x256/apps/info.femm.unofficial.png
-    - install -D --mode=644 femm.desktop /app/share/applications/info.femm.unofficial.desktop
-    - install -D --mode=644 info.femm.femm.appdata.xml /app/share/metainfo/info.femm.unofficial.appdata.xml
+    - install -D --mode=644 femm-unofficial.desktop /app/share/applications/info.femm.unofficial.desktop
+    - install -D --mode=644 info.femm.unofficial.appdata.xml /app/share/metainfo/info.femm.unofficial.appdata.xml
     sources:
     - type: file
       path: femm.sh

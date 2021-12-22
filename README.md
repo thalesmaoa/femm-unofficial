@@ -8,6 +8,10 @@ My effort was only to pack essential packages to run wine and provide a script t
 
 Flatpak is native for a majority of distributions. If this is not your case, you can [install flatpak](https://flatpak.org/setup/).
 
+Download platpak and install:
+
+``` flatpak install info.femm.unofficial.flatpak```
+
 I'm working on a repository...
 
 ## Octave
@@ -38,7 +42,41 @@ Prepare for compiling wine. It's gonna take a while.
 
 To test:
 
-```latpak-builder --run femm-unoficial info.femm.unofficial-manifest.yml```
+```flatpak-builder --run femm-unoficial info.femm.unofficial-manifest.yml femm.sh```
+
+### Repository
+
+Build local repository
+
+```flatpak-builder --repo=thalesmaoa --force-clean femm-unoficial info.femm.unofficial-manifest.yml```
+
+Install
+
+```flatpak --user remote-add --no-gpg-verify thalesmaoa thalesmaoa```
+
+List local packages repository
+
+```flatpak remotes```
+
+Install the package
+
+```flatpak --user install thalesmaoa info.femm.unofficial```
+
+Running the program
+
+```flatpak run info.femm.unofficial```
+
+### Single-file bundles
+
+```flatpak build-bundle femm-unofficial info.femm.unofficial.flatpak info.femm.unofficial```
+
+### Known bugs
+
+Flatpak may not install i386 runtime for you. If so, you can have a missing /app/bin/wine warning.
+
+If so:
+
+```flatpak install org.freedesktop.Platform.Compat.i386```
 
 ### Acknowledge
 
