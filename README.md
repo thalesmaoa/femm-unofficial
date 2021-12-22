@@ -12,6 +12,14 @@ Download platpak and install:
 
 ``` flatpak install info.femm.unofficial.flatpak```
 
+#### Known bugs
+
+Flatpak may not install i386 runtime for you. If so, you can have a missing /app/bin/wine.
+
+If so:
+
+```flatpak install org.freedesktop.Platform.Compat.i386```
+
 I'm working on a repository...
 
 ## Octave
@@ -69,14 +77,6 @@ Running the program
 ### Single-file bundles
 
 ```flatpak build-bundle femm-unofficial info.femm.unofficial.flatpak info.femm.unofficial```
-
-### Known bugs
-
-Flatpak may not install i386 runtime for you. If so, you can have a missing /app/bin/wine warning.
-
-If so:
-
-```flatpak install org.freedesktop.Platform.Compat.i386```
 
 ### Acknowledge
 
