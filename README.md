@@ -18,7 +18,7 @@ Flatpak may not install i386 runtime for you. If so, you can have a missing /app
 
 If so:
 
-```flatpak install org.freedesktop.Platform.Compat.i386```
+```flatpak install --user org.freedesktop.Platform.Compat.i386/x86_64/21.08```
 
 I'm working on a repository...
 
