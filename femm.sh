@@ -48,7 +48,7 @@ first_run(){
   
   # Installl Compat.i386 if not found
   flatpak-spawn --host flatpak list|grep org.freedesktop.Platform.Compat.i386|grep 21.08 || \
-  flatpak-spawn --host flatpak install -y --user org.freedesktop.Platform.Compat.i386/x86_64/21.08
+  flatpak-spawn --host flatpak install -y org.freedesktop.Platform.Compat.i386/x86_64/21.08
 
   echo "Running FEMM 4.2."
   "${WINE}" "${POE_SETUP}"
@@ -83,8 +83,9 @@ startup(){
   fi
   
   if ! grep 'flatpak' "${WINEPREFIX}/drive_c/femm42/mfiles/openfemm.m" >/dev/null; then
-    echo "Adjusting Octave compatibility"
+    echo "Adjusting Octave and Python compatibility"
     cp -f /app/mfiles/* ${WINEPREFIX}/drive_c/femm42/mfiles
+    cp -f /app/wine-bash ${WINEPREFIX}/wine
   fi
 
   echo ; echo "Starting FEMM 4.2..."

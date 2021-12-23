@@ -10,9 +10,9 @@ Flatpak is native for a majority of distributions. If this is not your case, you
 
 Download platpak and install:
 
-```flatpak install info.femm.unofficial.flatpak```
+```flatpak install --user info.femm.unofficial.flatpak```
 
-First time it will adjust everything and download femm to install. It can take a while. Thus, you can run directly from your application menu, however it is better to keep track of the installation process. My suggestion is to run it from CLI.
+First time it will adjust everything and download femm to install. It can take a while. You can run directly from your application menu, however it is better to keep track of the installation process. My suggestion is to run it from CLI.
 
     
 ```flatpak run info.femm.unofficial```
@@ -39,7 +39,7 @@ It just set everything automatcally. Just add the path
 
 Same as octave, just point to the correct folder.
 
-```femm.openfemm(winepath='~/.local/share/wine-flatpak',femmpath='~/.local/share/femm-unofficial/drive_c/femm42')```
+```femm.openfemm(winepath='/home/<change_to_your_username>/.local/share/femm42-flatpak/', femmpath='/home/<change_to_your_username>/.local/share/femm42-flatpak/drive_c/femm42/bin/')```
 
 ## Building your own flatpak
 

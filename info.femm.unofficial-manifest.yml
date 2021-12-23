@@ -172,6 +172,7 @@ modules:
     - mkdir -p /app/mfiles
     - install -D openfemm.m /app/mfiles
     - install -D callfemm.m /app/mfiles
+    - install -D wine-bash /app
     sources:
     - type: file
       path: femm.sh
@@ -185,6 +186,8 @@ modules:
       path: openfemm.m
     - type: file
       path: callfemm.m
+    - type: file
+      path: wine-bash
 
 
 cleanup:
