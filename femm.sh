@@ -18,9 +18,9 @@ VERSION_FILE="${WINEPREFIX}/info.femm.unofficial"
 declare -ra WINE_PACKAGES=(directx9 corefonts tahoma win7)
 declare -ra WINE_SETTINGS=('csmt=on' 'glsl=disabled')
 
-echo "#################################################"
+echo "#############################################"
 echo "## FEMM 4.2 Unofficial Flatpak v${VERSION_NUM} ##"
-echo "#################################################"
+echo "#############################################"
 echo
 
 set_wine_settings(){
@@ -67,7 +67,7 @@ is_updated(){
 
 # Main function
 startup(){
-  if ! grep -q 'Software\\\\Gedanken Magnetics\\\\FEMM\\\\4\\\\femm' "${WINEPREFIX}/user.reg" >/dev/null; then
+  if ! grep 'Software\\\\Gedanken Magnetics\\\\FEMM\\\\4\\\\femm' "${WINEPREFIX}/user.reg" >/dev/null; then
     echo "FEMM not installed."
     first_run
   else

@@ -46,17 +46,17 @@ Install flatpak builder.
 
 Prepare for compiling wine. It's gonna take a while.
 
-```flatpak-builder --force-clean femm-unoficial info.femm.unofficial-manifest.yml```
+```flatpak-builder --force-clean femm-unofficial info.femm.unofficial-manifest.yml```
 
 To test:
 
-```flatpak-builder --run femm-unoficial info.femm.unofficial-manifest.yml femm.sh```
+```flatpak-builder --run femm-unofficial info.femm.unofficial-manifest.yml femm.sh```
 
 ### Repository
 
 Build local repository
 
-```flatpak-builder --repo=thalesmaoa --force-clean femm-unoficial info.femm.unofficial-manifest.yml```
+```flatpak-builder --repo=thalesmaoa --force-clean femm-unofficial info.femm.unofficial-manifest.yml```
 
 Install
 
