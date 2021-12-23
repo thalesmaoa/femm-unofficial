@@ -38,7 +38,7 @@ set_wine_settings(){
 # Run only if POE isn't installed
 first_run(){
   set_wine_settings
-  echo "Aqui"
+
   echo "${VERSION_NUM}" > "${VERSION_FILE}"
 
   if [ ! -f "${POE_SETUP}" ]; then
@@ -80,6 +80,11 @@ startup(){
       echo "Not up to date, re-run wine settings"
       set_wine_settings
     fi
+  fi
+  
+  if ! grep 'flatpak' "${WINEPREFIX}/drive_c/femm42/mfiles/openfemm.m" >/dev/null; then
+    echo "Adjusting Octave compatibility"
+    cp -f /app/mfiles/* ${WINEPREFIX}/drive_c/femm42/mfiles
   fi
 
   echo ; echo "Starting FEMM 4.2..."

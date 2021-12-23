@@ -10,7 +10,14 @@ Flatpak is native for a majority of distributions. If this is not your case, you
 
 Download platpak and install:
 
-``` flatpak install info.femm.unofficial.flatpak```
+```flatpak install info.femm.unofficial.flatpak```
+
+First time it will adjust everything and download femm to install. It can take a while. Thus, you can run directly from your application menu, however it is better to keep track of the installation process. My suggestion is to run it from CLI.
+
+    
+```flatpak run info.femm.unofficial```
+
+It will also copy mod mfiles to work with octave.
 
 #### Known bugs
 
@@ -26,7 +33,7 @@ I'm working on a repository...
 
 It just set everything automatcally. Just add the path
 
-```addpath("~/.local/share/femm-unofficial/drive_c/femm42/mfiles");```
+```addpath("~/.local/share/femm42-flatpak/drive_c/femm42/mfiles/");```
 
 ## Python
 

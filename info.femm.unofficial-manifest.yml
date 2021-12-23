@@ -177,6 +177,9 @@ modules:
     - install -D --mode=644 femm-256.svg /app/share/icons/hicolor/256x256/apps/info.femm.unofficial.png
     - install -D --mode=644 femm-unofficial.desktop /app/share/applications/info.femm.unofficial.desktop
     - install -D --mode=644 info.femm.unofficial.appdata.xml /app/share/metainfo/info.femm.unofficial.appdata.xml
+    - mkdir -p /app/mfiles
+    - install -D openfemm.m /app/mfiles
+    - install -D callfemm.m /app/mfiles
     sources:
     - type: file
       path: femm.sh
@@ -186,6 +189,10 @@ modules:
       path: femm-unofficial.desktop
     - type: file
       path: info.femm.unofficial.appdata.xml
+    - type: file
+      path: openfemm.m
+    - type: file
+      path: callfemm.m
 
 
 cleanup:
