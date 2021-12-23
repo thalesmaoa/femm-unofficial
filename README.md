@@ -76,7 +76,7 @@ Running the program
 
 ### Single-file bundles
 
-```flatpak build-bundle femm-unofficial info.femm.unofficial.flatpak info.femm.unofficial```
+```flatpak build-bundle thalesmaoa info.femm.unofficial.flatpak info.femm.unofficial```
 
 ### Acknowledge
 
