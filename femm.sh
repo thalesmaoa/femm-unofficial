@@ -45,6 +45,11 @@ first_run(){
     echo "Downloading FEMM 4.2."
     curl -o "${POE_SETUP}" -O -J -L "${POE_DOWNLOAD_URL}" 
   fi
+  
+  # Installl Compat.i386 if not found
+  flatpak-spawn --host flatpak list|grep org.freedesktop.Platform.Compat.i386|grep 21.08 || \
+  flatpak-spawn --host flatpak install -y --user org.freedesktop.Platform.Compat.i386/x86_64/21.08
+
   echo "Running FEMM 4.2."
   "${WINE}" "${POE_SETUP}"
 }
