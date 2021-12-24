@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export WINEPREFIX="${HOME}/.local/share/femm42-flatpak"
+export WINEPREFIX="${HOME}/.local/share/femm-flatpak"
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
 POE_INSTALLER_NAME="femm42bin_x64_21Apr2019.exe"
@@ -13,14 +13,14 @@ WINE="/app/bin/wine"
 XORG_LOG="/var/log/Xorg.0.log"
 
 VERSION_NUM="1.0.0"
-VERSION_FILE="${WINEPREFIX}/info.femm.unofficial"
+VERSION_FILE="${WINEPREFIX}/info.femm.flatpak"
 
 declare -ra WINE_PACKAGES=(directx9 corefonts tahoma win7)
-declare -ra WINE_SETTINGS=('csmt=on' 'glsl=disabled')
+declare -ra WINE_SETTINGS=('csmt=on' 'shader_backend=arb')
 
-echo "#############################################"
-echo "## FEMM 4.2 Unofficial Flatpak v${VERSION_NUM} ##"
-echo "#############################################"
+echo "#############################"
+echo "## FEMM 4.2 Flatpak v${VERSION_NUM} ##"
+echo "#############################"
 echo
 
 set_wine_settings(){
@@ -28,7 +28,7 @@ set_wine_settings(){
 
   echo "Installing wine requirements."
   winetricks --unattended "${WINE_PACKAGES[@]}"
-
+rm -rf 
   echo "Setting wine settings."
   winetricks --unattended "${WINE_SETTINGS[@]}"
 
@@ -37,7 +37,11 @@ set_wine_settings(){
 
 # Run only if POE isn't installed
 first_run(){
-  set_wine_settings
+  # Installl Compat.i386 if not found
+  flatpak-spawn --host flatpak list|grep org.freedesktop.Platform.Compat.i386|grep 21.08 || \
+  flatpak-spawn --host flatpak install -y org.freedesktop.Platform.Compat.i386/x86_64/21.08
+  
+  #set_wine_settings
 
   echo "${VERSION_NUM}" > "${VERSION_FILE}"
 
@@ -46,11 +50,7 @@ first_run(){
     curl -o "${POE_SETUP}" -O -J -L "${POE_DOWNLOAD_URL}" 
   fi
   
-  # Installl Compat.i386 if not found
-  flatpak-spawn --host flatpak list|grep org.freedesktop.Platform.Compat.i386|grep 21.08 || \
-  flatpak-spawn --host flatpak install -y org.freedesktop.Platform.Compat.i386/x86_64/21.08
-
-  echo "Running FEMM 4.2."
+  echo "Running FEMM 4.2 Installation..."
   "${WINE}" "${POE_SETUP}"
 }
 
@@ -78,7 +78,7 @@ startup(){
   else
     if ! is_updated; then
       echo "Not up to date, re-run wine settings"
-      set_wine_settings
+      #set_wine_settings
     fi
   fi
   

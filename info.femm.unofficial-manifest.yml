@@ -14,6 +14,13 @@ build-options:
 
 # Support 32-bit at runtime
 add-extensions:
+  org.freedesktop.LinuxAudio.Plugins:
+    directory: extensions/Plugins
+    versions: '21.08'
+    add-ld-path: lib
+    merge-dirs: lxvst;vst3
+    subdirectories: true
+    no-autodownload: true
 
   org.freedesktop.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
@@ -31,13 +38,13 @@ finish-args:
   - --share=network
   - --socket=pulseaudio
   - --allow=multiarch
-  #- --allow=devel
+  - --allow=devel
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.gnome.Mutter.DisplayConfig
   - --talk-name=org.freedesktop.Flatpak
   - --filesystem=host
   - --filesystem=~/.local/share/femm42-flatpak/:create
-  #- --device=all
+  - --device=all
   - --device=dri
   # wineprefixes are created here
   - --persist=~/.local/share/femm42-flatpak/
@@ -63,6 +70,7 @@ modules:
   - name: org.winehq.wine_64bit-5.0.5
     builddir: true
     build-options:
+      make-args: -j8
       prefix: /app
       prepend-path: /app/bin
       ldflags: -L/app/lib64 -L/app/lib -L/app/lib32
@@ -98,7 +106,7 @@ modules:
       --without-hal
       --without-netapi
       --enable-win64 &&  
-      make -j$FLATPAK_BUILDER_N_JOBS
+      make -j8
 
     # 2. Build wine32 twice
     - export CC=i686-unknown-linux-gnu-gcc  &&
@@ -117,7 +125,7 @@ modules:
       --without-gsm
       --without-hal
       --without-netapi &&
-      make -j$FLATPAK_BUILDER_N_JOBS
+      make -j8
 
     # 3. Build 32bit second time and 
     # install 32 bit and 64 bit wine
@@ -139,7 +147,7 @@ modules:
       --without-gsm
       --without-hal
       --without-netapi   &&
-      make -j$FLATPAK_BUILDER_N_JOBS && 
+      make -j8           && 
       make install       && 
       cd ../wine64-build && 
       make install
@@ -166,7 +174,7 @@ modules:
     build-commands:
     # icon
     - install femm.sh /app/bin 
-    - install -D --mode=644 femm-256.svg /app/share/icons/hicolor/256x256/apps/info.femm.unofficial.svg
+    - install -D --mode=644 femm-256.svg /app/share/icons/hicolor/256x256/apps/info.femm.unofficial.png
     - install -D --mode=644 femm-unofficial.desktop /app/share/applications/info.femm.unofficial.desktop
     - install -D --mode=644 info.femm.unofficial.appdata.xml /app/share/metainfo/info.femm.unofficial.appdata.xml
     - mkdir -p /app/mfiles

@@ -10,12 +10,12 @@ Flatpak is native for a majority of distributions. If this is not your case, you
 
 Download platpak and install:
 
-```flatpak install --user info.femm.unofficial.flatpak```
+```flatpak install --user info.femm.flatpak.flatpak```
 
 First time it will adjust everything and download femm to install. It can take a while. You can run directly from your application menu, however it is better to keep track of the installation process. My suggestion is to run it from CLI.
 
     
-```flatpak run info.femm.unofficial```
+```flatpak run info.femm.flatpak```
 
 It will also copy mod mfiles to work with octave.
 
@@ -33,19 +33,19 @@ I'm working on a repository...
 
 It just set everything automatcally. Just add the path
 
-```addpath("~/.local/share/femm42-flatpak/drive_c/femm42/mfiles/");```
+```addpath("~/.local/share/femm-flatpak/drive_c/femm42/mfiles/");```
 
 ## Python
 
 Same as octave, just point to the correct folder.
 
-```femm.openfemm(winepath='/home/<change_to_your_username>/.local/share/femm42-flatpak/', femmpath='/home/<change_to_your_username>/.local/share/femm42-flatpak/drive_c/femm42/bin/')```
+```femm.openfemm(winepath='/home/<change_to_your_username>/.local/share/femm-flatpak/', femmpath='/home/<change_to_your_username>/.local/share/femm-flatpak/drive_c/femm42/bin/')```
 
 ## Building your own flatpak
 
 ```git clone https://github.com/thalesmaoa/femm-unofficial.git```
 
-```cd femm-unofficial```
+```cd femm-flatpak```
 
 Install flatpak builder.
 
@@ -53,17 +53,17 @@ Install flatpak builder.
 
 Prepare for compiling wine. It's gonna take a while.
 
-```flatpak-builder --force-clean femm-unofficial info.femm.unofficial-manifest.yml```
+```flatpak-builder --force-clean femm-flatpak info.femm.flatpak.yml```
 
 To test:
 
-```flatpak-builder --run femm-unofficial info.femm.unofficial-manifest.yml femm.sh```
+```flatpak-builder --run femm-flatpak info.femm.flatpak.yml femm.sh```
 
 ### Repository
 
 Build local repository
 
-```flatpak-builder --repo=thalesmaoa --force-clean femm-unofficial info.femm.unofficial-manifest.yml```
+```flatpak-builder --repo=thalesmaoa --force-clean femm-unofficial info.femm.flatpak.yml```
 
 Install
 
@@ -75,15 +75,15 @@ List local packages repository
 
 Install the package
 
-```flatpak --user install thalesmaoa info.femm.unofficial```
+```flatpak --user install thalesmaoa info.femm.flatpak```
 
 Running the program
 
-```flatpak run info.femm.unofficial```
+```flatpak run info.femm.flatpak```
 
 ### Single-file bundles
 
-```flatpak build-bundle thalesmaoa info.femm.unofficial.flatpak info.femm.unofficial```
+```flatpak build-bundle thalesmaoa info.femm.flatpak.flatpak info.femm.flatpak```
 
 ### Acknowledge
 

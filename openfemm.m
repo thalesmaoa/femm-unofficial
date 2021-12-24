@@ -1,7 +1,7 @@
 function openfemm(fn)
     global ifile ofile HandleToFEMM
 
-    rootdir=tilde_expand('~/.local/share/femm42-flatpak/drive_c/femm42/bin/');
+    rootdir=tilde_expand('~/.local/share/femm-flatpak/drive_c/femm42/bin/');
 
     try
         pkg load windows
@@ -33,7 +33,7 @@ function openfemm(fn)
         if (fid==-1)
             unlink(ifile);
             system([ ...
-            '${HOME}/.local/share/femm42-flatpak/wine ', ...
+            '${HOME}/.local/share/femm-flatpak/wine ', ...
             rootdir, ...
             'femm.exe -filelink' ...
             ],0,'async');
